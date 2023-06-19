@@ -1,6 +1,6 @@
 - name: create folder - {{ item.dir }}
   community.general.jenkins_jobs:
-    config: "{{ lookup('file', '/tmp/folder.xml') }}"
+    config: "{{ lookup('file', 'templates/folder.xml') }}"
     name: "{{item}}"
     url: http://52.23.248.230:8080/
     user: admin
