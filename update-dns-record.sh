@@ -11,5 +11,5 @@ echo '
       "TTL": 15,
       "ResourceRecords": [{ "Value": "IPADDRESS"}]
     }}]
-}'  | sed -e "/IPADDRESS/${IP}/"
+}'  | sed "/IPADDRESS/${IP}/"
 
