@@ -5,6 +5,7 @@
     password: "{{jenkins_password}}"
     name: "{{item.dir}}/{{item.name}}-1"
   register: out
+  ignore_errors: yes
 
 - name: debug
   debug:
