@@ -7,20 +7,18 @@
   register: out
   ignore_errors: yes
 
-- name: debug
-  debug:
-    msg: "{{out}}"
-
-- name: create config file
+- name: create config file - {{item.dir}}/{{item.name}}
   ansible.builtin.template:
     src: s-job.xml
     dest: /tmp/s-job.xml
+  when: out.failed | bool
 
 
-- name: Create a jenkins job using basic authentication
+- name: Create a jenkins job - {{item.dir}}/{{item.name}}
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/s-job.xml') }}"
     name: "{{item.dir}}/{{item.name}}"
     url: http://172.31.83.107:8080/
     user: admin
     password: "{{jenkins_password}}"
+  when: out.failed | bool
