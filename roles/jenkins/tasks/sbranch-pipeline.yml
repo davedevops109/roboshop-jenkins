@@ -4,6 +4,7 @@
     user: admin
     password: "{{jenkins_password}}"
     name: "{{item.dir}}/{{item.name}}"
+  register: out
 
 - name: debug
   debug:
